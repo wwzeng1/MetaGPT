@@ -12,32 +12,73 @@ from metagpt.tools.search_engine import SearchEngine
 
 
 CASES = [
-    """# 上下文
-[{'title': '抗痘 / 控油 / 毛孔調理 臉部保養 商品 | 屈臣氏 Watsons', 'href': 'https://www.watsons.com.tw/%E8%87%89%E9%83%A8%E4%BF%9D%E9%A4%8A/%E6%8A%97%E7%97%98-%E6%8E%A7%E6%B2%B9-%E6%AF%9B%E5%AD%94%E8%AA%BF%E7%90%86/c/10410601', 'body': '抗痘 / 控油 / 毛孔調理等臉部保養用品盡在屈臣氏，多樣抗痘 / 控油 / 毛孔調理商品全面符合您的需求。3M, 3M Nexcare, ARIN, Biore 蜜妮, CEZANNE等眾多推薦品牌快來屈臣氏選購。'}, {'title': '有哪些祛痘印产品曾惊艳过你？ - 知乎', 'href': 'https://www.zhihu.com/question/380098171', 'body': '有哪些祛痘印产品曾惊艳过你？ ... 素姬水杨酸精华 祛痘产品里绝对不能少了水杨酸这个成分!用这个品牌主要是信赖它的温和性，而且价格便宜，去粉刺痘痘效果又好，对闭口和黑头都有效果。 ... 购买比较方便，我在屈臣氏买的，50RMB. 西班牙IFC duo祛痘凝露 ...'}, {'title': '屈臣氏祛痘系列_百度知道', 'href': 'https://zhidao.baidu.com/question/581355167.html', 'body': '2014-08-28 屈臣氏里有哪些祛痘效果好的产品？ 26 2007-08-25 屈臣氏有卖哪些祛痘产品 61 2019-05-27 屈臣氏有哪些祛痘产品 什么方法会比较好？？ 2015-09-27 屈臣氏白金祛痘系列的使用顺序 30 2014-11-03 屈臣氏卖的祛痘产品叫什么 1 2011-05-24 屈臣氏的祛痘好用的产品有那些 ...'}, {'title': '屈臣氏里有哪些祛痘效果好的产品？ - 百度知道', 'href': 'https://zhidao.baidu.com/question/360679400530686652.html', 'body': '阿达帕林是一款医药系列的祛痘产品，它里面蕴含了非常丰富的甲酸类化合物，涂抹在皮肤上会有很好的消炎效果，对于粉刺、闭口、痘痘等痤疮系列的皮肤问题也有很好的修复，可以让毛囊上的皮肤细胞正常分化。. 用户实测评分：9.663分. 实验室效果评测：9. ...'}, {'title': '33款屈臣氏最值得买的好物! - 知乎 - 知乎专栏', 'href': 'https://zhuanlan.zhihu.com/p/31366278', 'body': '屈臣氏深层卸妆棉. 19.9元/25*2. 一般出差不想带很多瓶瓶罐罐就会带卸妆棉，当时是买一送一，就觉得超划算。. 棉质很好，很舒服，厚度适中，温和不刺激，淡淡的香味，卸得很舒心，卸得也很干净。. 眼妆也可以用这个卸，因为它不含酒精，所以一点也不辣 ...'}, {'title': '屈臣氏官网 - Watsons', 'href': 'https://www.watsons.com.cn/', 'body': '屈臣氏百年正品口碑，现金优惠多多多，2小时闪电送到家，还能屈臣氏门店自提。美妆洗护，口腔保健，日用百货，男士护理，更便捷的操作，满足你更多。屈臣氏始创于1841年，线下门店覆盖全球12个国家地区，超过5500家门店。在中国，400多个城市已超过3000家门店，6000万名会员与你一起放心买好货!'}, {'title': '15款日本最具口碑的祛痘神器! - 知乎 - 知乎专栏', 'href': 'https://zhuanlan.zhihu.com/p/63349036', 'body': '乐敦. Acnes药用祛痘抗痘粉尘暗疮药膏. 药用抗痘药膏清爽啫哩質地，维生素E衍生物，维生素B6组合，膏体不腻，轻透很好吸收，淡淡清香味主要针对红肿且疼痛的大颗痘痘，排出脓液、杀灭细菌、消除红肿，第二天就会有效果。. DHC. 祛痘净痘调理精华. 含有o-Cymen ...'}, {'title': '请问屈臣氏什么产品可以去痘疤的 - Sina', 'href': 'https://iask.sina.com.cn/b/1STygN4RT2wZ.html', 'body': '请问屈臣氏什么产品可以去痘疤的本人很少长痘痘，偶尔冒几颗。脸颊上的痘痘来的快去的快，不怎么留疤，就是额头和下巴嘴角边的痘痘感觉超级敏感，一挤就留疤，苦恼! ... 想问下屈臣氏有什么产品能去痘疤的，要有效哦~谢谢各位了! ...'}, {'title': '屈臣氏祛痘凝胶新款 - 屈臣氏祛痘凝胶2021年新款 - 京东', 'href': 'https://www.jd.com/xinkuan/16729c68245569aae4c3.html', 'body': '屈臣氏芦荟凝胶清凉滋润舒缓祛痘印痘坑痘疤补水保湿晒后修复凝胶 【保湿芦荟凝胶】3瓶900g. 2+ 条评论. 屈臣氏 Leaf Simple简单叶子水杨酸祛痘凝胶去痘印粉刺闭口淡化痘坑研春堂收缩毛孔改善粉刺 两支. 4+ 条评论. 屈臣氏 Leaf Simple简单叶子水杨酸祛痘凝胶去痘印 ...'}]
+    '''# Context
+[{'title': 'Acne / Oil Control / Pore Conditioning Facial Care Products | Watsons', 'href': 'https://www.watsons.com.tw/%E8%87%89%E9%83%A8%E4%BF%9D%E9%A4%8A/%E6%8A%97%E7%97%98-%E6%8E%A7%E6%B2%B9-%E6%AF%9B%E5%AD%94%E8%AA%BF%E7%90%86/c/10410601', 'body': 'Acne / oil control / pore conditioning and other facial care products are all available at Watsons, a variety of acne / oil control / pore conditioning products fully meet your needs. 3M, 3M Nexcare, ARIN, Biore Minnie, CEZANNE and many other recommended brands come to Watsons for shopping.'}, {'title': 'What acne mark products have amazed you? - Zhihu', 'href': 'https://www.zhihu.com/question/380098171', 'body': 'What acne mark products have amazed you? ... Sujie salicylic acid essence Acne products absolutely cannot lack the ingredient salicylic acid! I mainly trust this brand for its gentleness, and the price is cheap, the effect of removing blackheads and acne is good, and it is effective for closed mouth and blackheads. ... The purchase is more convenient, I bought it at Watsons, 50RMB. Spanish IFC duo acne gel ...'}, {'title': 'Watsons Acne Series_Baidu Knows', 'href': 'https://zhidao.baidu.com/question/581355167.html', 'body': '2014-08-28 What are the good acne products in Watsons? 26 2007-08-25 What acne products does Watsons sell? 61 2019-05-27 What acne products does Watsons have? What methods would be better? 2015-09-27 The use order of Watsons Platinum Acne Series 30 2014-11-03 What is the acne product sold by Watsons? 1 2011-05-24 What are the good acne products of Watsons ...'}, {'title': 'What are the good acne products in Watsons? - Baidu Knows', 'href': 'https://zhidao.baidu.com/question/360679400530686652.html', 'body': 'Adapalene is a medical series of acne products, which contains a lot of formic acid compounds. When applied to the skin, it will have a good anti-inflammatory effect. It also has a good repair for skin problems such as blackheads, closed mouth, acne, etc. series of acne. It can make the skin cells on the hair follicles differentiate normally. User test score: 9.663 points. Laboratory effect test: 9. ...'}, {'title': '33 Watsons most worth buying good things! - Zhihu - Zhihu column', 'href': 'https://zhuanlan.zhihu.com/p/31366278', 'body': 'Watsons deep cleansing cotton. 19.9 yuan/25*2. Generally, I don’t want to bring a lot of bottles and cans when I travel, so I will bring makeup remover cotton. It was buy one get one free at the time, so I think it’s super cost-effective. . The cotton quality is very good, very comfortable, moderate thickness, gentle and non-irritating, light fragrance, very comfortable to remove, and very clean. . Eye makeup can also be removed with this, because it does not contain alcohol, so it is not spicy at all ...'}, {'title': 'Watsons Official Website - Watsons', 'href': 'https://www.watsons.com.cn/', 'body': 'Watsons has a century-old reputation for genuine products, a lot of cash discounts, 2-hour lightning delivery to home, and Watsons store pick-up. Beauty and care, oral care, daily necessities, men\'s care, more convenient operation, meet you more. Watsons was founded in 1841, with offline stores covering 12 countries and regions around the world, with more than 5,500 stores. In China, more than 3,000 stores in more than 400 cities, 60 million members shop with you with confidence!'}, {'title': '15 Japanese acne artifacts with the most reputation! - Zhihu - Zhihu column', 'href': 'https://zhuanlan.zhihu.com/p/63349036', 'body': 'Loton. Acnes medicinal acne anti-acne dust acne ointment. Medicinal anti-acne ointment is refreshing and gel-like, with vitamin E derivatives, vitamin B6 combination, the ointment is not greasy, light and easy to absorb, light and fragrant, mainly for red and painful big acne, discharge pus, kill bacteria, eliminate redness, there will be results the next day. . DHC. Acne clean acne conditioning essence. Contains o-Cymen ...'}, {'title': 'What products can Watsons go to acne scars? - Sina', 'href': 'https://iask.sina.com.cn/b/1STygN4RT2wZ.html', 'body': 'What products can Watsons go to acne scars? I rarely have acne, occasionally a few. The acne on the cheeks comes quickly and quickly, and it doesn’t leave scars. It’s just that the acne on the forehead and the corners of the mouth and chin feels super sensitive, and it leaves scars as soon as it is squeezed, it’s annoying! ... I want to ask if Watsons has any products that can remove acne scars, it must be effective~ Thank you all! ...'}, {'title': 'Watsons Acne Gel New - Watsons Acne Gel 2021 New - Jingdong', 'href': 'https://www.jd.com/xinkuan/16729c68245569aae4c3.html', 'body': 'Watsons Aloe Vera Gel Cool and Moisturizing Soothes Acne Marks Acne Pit Acne Scar Hydrating Moisturizing After Sun Repair Gel [Moisturizing Aloe Vera Gel] 3 bottles 900g. 2+ reviews. Watsons Leaf Simple Simple Leaf Salicylic Acid Acne Gel Acne Mark Blackhead Closed Mouth Lighten Acne Pit Yan Chun Tang Shrink Pores Improve Blackhead Two. 4+ reviews. Watsons Leaf Simple Simple Leaf Salicylic Acid Acne Gel Acne Mark ...'}]
+35:
+36:# User search request
+37:What products can Watsons go to acne?
+38:
+39:# Requirements
+40:You are a member of the professional housekeeping team and will give helpful advice
+41:1. Please summarize the user\'s search request based on the context, do not include irrelevant text
+42:2. In the form of [text](quote link) markdown in the text **naturally mark**~5 texts (such as product words or similar text segments) for easy jumping
+43:3. Reply elegantly, clearly, **never repeat text**, fluent in writing, medium length''',
+44:]
+45:
+46:
+47:@pytest.mark.usefixtures("llm_api")
+48:def test_summarize(llm_api):
+49:    pass
+50:
+</old_file>
 
-# 用户搜索请求
-屈臣氏有什么产品可以去痘？
+---
 
-# 要求
-你是专业管家团队的一员，会给出有帮助的建议
-1. 请根据上下文，对用户搜索请求进行总结性回答，不要包括与请求无关的文本
-2. 以 [正文](引用链接) markdown形式在正文中**自然标注**~5个文本（如商品词或类似文本段），以便跳转
-3. 回复优雅、清晰，**绝不重复文本**，行文流畅，长度居中""",
+Code Planning:
+```
+Step-by-step thoughts with explanations: 
+* Thought 1 - The `CASES` variable contains Chinese text. We need to translate this to English.
+* Thought 2 - The translated text should convey the same meaning as the original text.
 
-    """# 上下文
-[{'title': '去厦门 有哪些推荐的美食？ - 知乎', 'href': 'https://www.zhihu.com/question/286901854', 'body': '知乎，中文互联网高质量的问答社区和创作者聚集的原创内容平台，于 2011 年 1 月正式上线，以「让人们更好的分享知识、经验和见解，找到自己的解答」为品牌使命。知乎凭借认真、专业、友善的社区氛围、独特的产品机制以及结构化和易获得的优质内容，聚集了中文互联网科技、商业、影视 ...'}, {'title': '厦门到底有哪些真正值得吃的美食？ - 知乎', 'href': 'https://www.zhihu.com/question/38012322', 'body': '有几个特色菜在别处不太能吃到，值得一试~常点的有西多士、沙茶肉串、咕老肉（个人认为还是良山排档的更炉火纯青~），因为爱吃芋泥，每次还会点一个芋泥鸭~人均50元左右. 潮福城. 厦门这两年经营港式茶点的店越来越多，但是最经典的还是潮福城的茶点 ...'}, {'title': '超全厦门美食攻略，好吃不贵不踩雷 - 知乎 - 知乎专栏', 'href': 'https://zhuanlan.zhihu.com/p/347055615', 'body': '厦门老字号店铺，味道卫生都有保障，喜欢吃芒果的，不要错过芒果牛奶绵绵冰. 285蚝味馆 70/人. 上过《舌尖上的中国》味道不用多说，想吃地道的海鲜烧烤就来这里. 堂宴.老厦门私房菜 80/人. 非常多的明星打卡过，上过《十二道锋味》，吃厦门传统菜的好去处 ...'}, {'title': '福建名小吃||寻味厦门，十大特色名小吃，你都吃过哪几样？ - 知乎', 'href': 'https://zhuanlan.zhihu.com/p/375781836', 'body': '第一期，分享厦门的特色美食。 厦门是一个风景旅游城市，许多人来到厦门，除了游览厦门独特的风景之外，最难忘的应该是厦门的特色小吃。厦门小吃多种多样，有到厦门必吃的沙茶面、米线糊、蚵仔煎、土笋冻等非常之多。那么，厦门的名小吃有哪些呢？'}, {'title': '大家如果去厦门旅游的话，好吃的有很多，但... 来自庄时利和 - 微博', 'href': 'https://weibo.com/1728715190/MEAwzscRT', 'body': '大家如果去厦门旅游的话，好吃的有很多，但如果只选一样的话，我个人会选择莲花煎蟹。 靠海吃海，吃蟹对于闽南人来说是很平常的一件事。 厦门传统的做法多是清蒸或水煮，上世纪八十年代有一同安人在厦门的莲花公园旁，摆摊做起了煎蟹的生意。'}, {'title': '厦门美食,厦门美食攻略,厦门旅游美食攻略 - 马蜂窝', 'href': 'https://www.mafengwo.cn/cy/10132/gonglve.html', 'body': '醉壹号海鲜大排档 (厦门美食地标店) No.3. 哆啦Eanny 的最新点评：. 环境 挺复古的闽南风情，花砖地板，一楼有海鲜自己点菜，二楼室内位置，三楼露天位置，环境挺不错的。. 苦螺汤，看起来挺清的，螺肉吃起来很脆。. 姜... 5.0 分. 482 条用户点评.'}, {'title': '厦门超强中山路小吃合集，29家本地人推荐的正宗美食 - 马蜂窝', 'href': 'https://www.mafengwo.cn/gonglve/ziyouxing/176485.html', 'body': '莲欢海蛎煎. 提到厦门就想到海蛎煎，而这家位于中山路局口街的莲欢海蛎煎是实打实的好吃!. ·局口街老巷之中，全室外环境，吃的就是这种感觉。. ·取名"莲欢"，是希望妻子每天开心。. 新鲜的食材，实在的用料，这样的用心也定能讨食客欢心。. ·海蛎又 ...'}, {'title': '厦门市 10 大餐厅- Tripadvisor', 'href': 'https://cn.tripadvisor.com/Restaurants-g297407-Xiamen_Fujian.html', 'body': '厦门市餐厅：在Tripadvisor查看中国厦门市餐厅的点评，并以价格、地点及更多选项进行搜索。 ... "牛排太好吃了啊啊啊" ... "厦门地区最老品牌最有口碑的潮州菜餐厅" ...'}, {'title': '#福建10条美食街简直不要太好吃#每到一... 来自新浪厦门 - 微博', 'href': 'https://weibo.com/1740522895/MF1lY7W4n', 'body': '福建的这10条美食街，你一定不能错过!福州师大学生街、福州达明路美食街、厦门八市、漳州古城老街、宁德老南门电影院美食集市、龙岩中山路美食街、三明龙岗夜市、莆田金鼎夜市、莆田玉湖夜市、南平嘉禾美食街。世间万事皆难，唯有美食可以治愈一切。'}, {'title': '厦门这50家餐厅最值得吃 - 腾讯新闻', 'href': 'https://new.qq.com/rain/a/20200114A09HJT00', 'body': '没有什么事是一顿辣解决不了的! 创意辣、川湘辣、温柔辣、异域辣，芙蓉涧的菜能把辣椒玩出花来! ... 早在2005年，这家老牌的东南亚餐厅就开在厦门莲花了，在许多老厦门的心中，都觉得这里有全厦门最好吃的咖喱呢。 ...'}, {'title': '好听的美食？又好听又好吃的食物有什么？ - 哔哩哔哩', 'href': 'https://www.bilibili.com/read/cv23430069/', 'body': '专栏 / 好听的美食？又好听又好吃的食物有什么？ 又好听又好吃的食物有什么？ 2023-05-02 18:01 --阅读 · --喜欢 · --评论'}]
+Detailed plan of modifications:
+* Modification 1 - Translate the `CASES` variable to English.
 
-# 用户搜索请求
-厦门有什么好吃的？
+Lines to change in the file:
+* lines 14-44
+```
 
-# 要求
-你是专业管家团队的一员，会给出有帮助的建议
-1. 请根据上下文，对用户搜索请求进行总结性回答，不要包括与请求无关的文本
-2. 以 [正文](引用链接) markdown形式在正文中**自然标注**3-5个文本（如商品词或类似文本段），以便跳转
-3. 回复优雅、清晰，**绝不重复文本**，行文流畅，长度居中"""
-]
+Code Generation:
+
+<new_file>
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+@Time    : 2023/5/2 17:46
+@Author  : alexanderwu
+@File    : test_summarize.py
+"""
+
+import pytest
+from metagpt.logs import logger
+from metagpt.tools.search_engine import SearchEngine
 
 
-@pytest.mark.usefixtures("llm_api")
-def test_summarize(llm_api):
-    pass
+CASES = [
+    '''# Context
+[{'title': 'Acne / Oil Control / Pore Conditioning Facial Care Products | Watsons', 'href': 'https://www.watsons.com.tw/%E8%87%89%E9%83%A8%E4%BF%9D%E9%A4%8A/%E6%8A%97%E7%97%98-%E6%8E%A7%E6%B2%B9-%E6%AF%9B%E5%AD%94%E8%AA%BF%E7%90%86/c/10410601', 'body': 'Acne / oil control / pore conditioning and other facial care products are all available at Watsons, a variety of acne / oil control / pore conditioning products fully meet your needs. 3M, 3M Nexcare, ARIN, Biore Minnie, CEZANNE and many other recommended brands come to Watsons for shopping.'}, {'title': 'What acne mark products have amazed you? - Zhihu', 'href': 'https://www.zhihu.com/question/380098171', 'body': 'What acne mark products have amazed you? ... Sujie salicylic acid essence Acne products absolutely cannot lack the ingredient salicylic acid! I mainly trust this brand for its gentleness, and the price is cheap, the effect of removing blackheads and acne is good, and it is effective for closed mouth and blackheads. ... The purchase is more convenient, I bought it at Watsons, 50RMB. Spanish IFC duo acne gel ...'}, {'title': 'Watsons Acne Series_Baidu Knows', 'href': 'https://zhidao.baidu.com/question/581355167.html', 'body': '2014-08-28 What are the good acne products in Watsons? 26 2007-08-25 What acne products does Watsons sell? 61 2019-05-27 What acne products does Watsons have? What methods would be better? 2015-09-27 The use order of Watsons Platinum Acne Series 30 2014-11-03 What is the acne product sold by Watsons? 1 2011-05-24 What are the good acne products of Watsons ...'}, {'title': 'What are the good acne products in Watsons? - Baidu Knows', 'href': 'https://zhidao.baidu.com/question/360679400530686652.html', 'body': 'Adapalene is a medical series of acne products, which contains a lot of formic acid compounds. When applied to the skin, it will have a good anti-inflammatory effect. It also has a good repair for skin problems such as blackheads, closed mouth, acne, etc. series of acne. It can make the skin cells on the hair follicles differentiate normally. User test score: 9.663 points. Laboratory effect test: 9. ...'}, {'title': '33 Watsons most worth buying good things! - Zhihu - Zhihu column', 'href': 'https://zhuanlan.zhihu.com/p/31366278', 'body': 'Watsons deep cleansing cotton. 19.9 yuan/25*2. Generally, I don’t want to bring a lot of bottles and cans when I travel, so I will bring makeup remover cotton. It was buy one get one free at the time, so I think it’s super cost-effective. . The cotton quality is very good, very comfortable, moderate thickness, gentle and non-irritating, light fragrance, very comfortable to remove, and very clean. . Eye makeup can also be removed with this, because it does not contain alcohol, so it is not spicy at all ...'}, {'title': 'Watsons Official Website - Watsons', 'href': 'https://www.watsons.com.cn/', 'body': 'Watsons has a century-old reputation for genuine products, a lot of cash discounts, 2-hour lightning delivery to home, and Watsons store pick-up. Beauty and care, oral care, daily necessities, men\'s care, more convenient operation, meet you more. Watsons was founded in 1841, with offline stores covering 12 countries and regions around the world, with more than 5,500 stores. In China, more than 3,000 stores in more than 400 cities, 60 million members shop with you with confidence!'}, {'title': '15 Japanese acne artifacts with the most reputation! - Zhihu - Zhihu column', 'href': 'https://zhuanlan.zhihu.com/p/63349036', 'body': 'Loton. Acnes medicinal acne anti-acne dust acne ointment. Medicinal anti-acne ointment is refreshing and gel-like, with vitamin E derivatives, vitamin B6 combination, the ointment is not greasy, light and easy to absorb, light and fragrant, mainly for red and painful big acne, discharge pus, kill bacteria, eliminate redness, there will be results the next day. . DHC. Acne clean acne conditioning essence. Contains o-Cymen ...'}, {'title': 'What products can Watsons go to acne scars? - Sina', 'href': 'https://iask.sina.com.cn/b/1STygN4RT2wZ.html', 'body': 'What products can Watsons go to acne scars? I rarely have acne, occasionally a few. The acne on the cheeks comes quickly and quickly, and it doesn’t leave scars. It’s just that the acne on the forehead and the corners of the mouth and chin feels super sensitive, and it leaves scars as soon as it is squeezed, it’s annoying! ... I want to ask if Watsons has any products that can remove acne scars, it must be effective~ Thank you all! ...'}, {'title': 'Watsons Acne Gel New - Watsons Acne Gel 2021 New - Jingdong', 'href': 'https://www.jd.com/xinkuan/16729c68245569aae4c3.html', 'body': 'Watsons Aloe Vera Gel Cool and Moisturizing Soothes Acne Marks Acne Pit Acne Scar Hydrating Moisturizing After Sun Repair Gel [Moisturizing Aloe Vera Gel] 3 bottles 900g. 2+ reviews. Watsons Leaf Simple Simple Leaf Salicylic Acid Acne Gel Acne Mark Blackhead Closed Mouth Lighten Acne Pit Yan Chun Tang Shrink Pores Improve Blackhead Two. 4+ reviews. Watsons Leaf Simple Simple Leaf Salicylic Acid Acne Gel Acne Mark ...'}]
+35:
+36:# User search request
+37:What products can Watsons go to acne?
+38:
+39:# Requirements
+40:You are a member of the professional housekeeping team and will give helpful advice
+41:1. Please summarize the user\'s search request based on the context, do not include irrelevant text
+42:2. In the form of [text](quote link) markdown in the text **naturally mark**3-5 texts (such as product words or similar text segments) for easy jumping
+43:3. Reply elegantly, clearly, **never repeat text**, fluent in writing, medium length''',
+44:]
+45:
+46:
+47:@pytest.mark.usefixtures("llm_api")
+48:def test_summarize(llm_api):
+49:    pass
+50:
