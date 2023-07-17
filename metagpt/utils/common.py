@@ -15,10 +15,10 @@ from metagpt.logs import logger
 
 
 def check_cmd_exists(command) -> int:
-    """ 检查命令是否存在
-    :param command: 待检查的命令
-    :return: 如果命令存在，返回0，如果不存在，返回非0
-    """
+    ''' Check if a command exists
+    :param command: The command to check
+    :return: Returns 0 if the command exists, non-zero otherwise
+    '''
     check_command = 'command -v ' + command + ' >/dev/null 2>&1 || { echo >&2 "no mermaid"; exit 1; }'
     result = os.system(check_command)
     return result
